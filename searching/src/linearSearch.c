@@ -30,3 +30,16 @@ void linearSearch (const int array[], uint32_t max, int32_t elem)
     printf ("Element %d not found in the array\n", elem);
     return;
 }
+
+//-----------------------------------------------------------------------
+//          main()
+//-----------------------------------------------------------------------
+//DESCRIPTION: Main
+//
+//-----------------------------------------------------------------------
+int main ()
+{
+    int array[10] = {4, 1, 77, 33, 6, 457, 54, 99, 13, 420};
+    linearSearch (array, 10, 420);
+    return 0;
+}

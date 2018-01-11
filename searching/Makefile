@@ -24,11 +24,11 @@ _DEPS = linearSearch.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 #provide required object files and replace with relative paths
-_OBJ = linearSearch.o main.o
+_OBJ = linearSearch.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 #provide required source files and replace with relative paths
-_SRC = linearSearch.c main.c
+_SRC = linearSearch.c
 SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
 
 #Create and rename object file for each source file
