@@ -1,49 +1,10 @@
-#place for header files
-IDIR = ./include
+all: linearSearch
 
-#place for object files
-ODIR =./obj
+linearSearch: ./obj/linearSearch.o
+	gcc -o ./bin/linearSearch ./obj/linearSearch.o
 
-#place for source C files
-SDIR =./src
-
-#place for executables
-BDIR =./bin
-
-#compiler
-CC = gcc
-
-#Flags needed for compilation
-CFLAGS = -I$(IDIR) -Werror -Wall -Wextra
-
-#libraries needed for compilation
-LIBS =
-
-#provide required header files and replace with relative paths
-_DEPS = linearSearch.h
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
-
-#provide required object files and replace with relative paths
-_OBJ = linearSearch.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
-#provide required source files and replace with relative paths
-_SRC = linearSearch.c
-SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
-
-#Create and rename object file for each source file
-$(ODIR)/%.o: $(SDIR)/%.c $(DEPS)
-	$(CC) -c $< -o $@ $(CFLAGS)
-	@echo "Compiled "$<" successfully!"
-
-#Create executable
-$(BDIR)/search: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
-	@echo "Linking complete!"
-
-#Make ignores any action on file named clean if any
-.PHONY: clean
+./obj/linearSearch.o: ./src/linearSearch.c ./include/linearSearch.h
+	gcc -o ./obj/linearSearch.o -c ./src/linearSearch.c -I ./include
 
 clean:
-	rm -f $(ODIR)/*.o $(BDIR)/*
-	@echo "Cleanup complete!"
+	rm -f ./obj/* ./bin/*
