@@ -1,10 +1,33 @@
-all: linearSearch
+IDIR   = ./include
+ODIR   = ./obj
+SDIR   = ./src
+BDIR   = ./bin
+CC     = gcc
+CFLAGS = -I $(IDIR) -Werror -Wall -Wextra -g
 
-linearSearch: ./obj/linearSearch.o
-	gcc -o ./bin/linearSearch ./obj/linearSearch.o
+all: linearSearch.exe binarySearchRegular.exe KMPSearching.exe
 
-./obj/linearSearch.o: ./src/linearSearch.c ./include/linearSearch.h
-	gcc -o ./obj/linearSearch.o -c ./src/linearSearch.c -I ./include
+#LinearSearch
+linearSearch.exe: $(ODIR)/linearSearch.o
+	$(CC) -o $(BDIR)/linearSearch.exe $(ODIR)/linearSearch.o
+
+$(ODIR)/linearSearch.o: $(SDIR)/linearSearch.c $(IDIR)/linearSearch.h
+	$(CC) -o $(ODIR)/linearSearch.o -c $(SDIR)/linearSearch.c $(CFLAGS)
+
+#BinarySearchRegular
+binarySearchRegular.exe: $(ODIR)/binarySearchRegular.o
+	$(CC) -o $(BDIR)/binarySearchRegular.exe $(ODIR)/binarySearchRegular.o
+
+$(ODIR)/binarySearchRegular.o: $(SDIR)/binarySearchRegular.c $(IDIR)/binarySearchRegular.h
+	$(CC) -o $(ODIR)/binarySearchRegular.o -c $(SDIR)/binarySearchRegular.c $(CFLAGS)
+
+#KMPSearch
+KMPSearching.exe: $(ODIR)/KMPSearching.o
+	$(CC) -o $(BDIR)/KMPSearching.exe $(ODIR)/KMPSearching.o
+
+$(ODIR)/KMPSearching.o: $(SDIR)/KMPSearching.c $(IDIR)/KMPSearching.h
+	$(CC) -o $(ODIR)/KMPSearching.o -c $(SDIR)/KMPSearching.c $(CFLAGS)
+
 
 clean:
-	rm -f ./obj/* ./bin/*
+	rm -f $(ODIR)/* $(BDIR)/*
