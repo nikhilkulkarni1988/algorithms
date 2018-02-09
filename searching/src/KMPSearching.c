@@ -5,9 +5,7 @@ Date:   7 Jan 2018
 Author: nikhilkulkarni88@gmail.com 
 
 **********************************/
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "KMPSearching.h"
 
 //-----------------------------------------------------------------------
 //          createLPS()
@@ -16,7 +14,7 @@ Author: nikhilkulkarni88@gmail.com
 //COMPLEXITY:  O(len)
 //
 //-----------------------------------------------------------------------
-int * createLPS(char *pPattern)
+static int * createLPS(char *pPattern)
 {
     if (pPattern == NULL)
     {

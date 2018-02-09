@@ -5,18 +5,24 @@ Date:   10 Jan 2018
 Author: nikhilkulkarni88@gmail.com 
 
 **********************************/
-#include <stdio.h>
+#include "binarySearchRegular.h"
 
 //-----------------------------------------------------------------------
-//          binarySearch()
+//          binarySearchRegular()
 //-----------------------------------------------------------------------
 //DESCRIPTION: Search for an element in a sorted array.
 //COMPLEXITY:  O(log(n))
 //
 //-----------------------------------------------------------------------
 //Assuming array in ascending order
-void binarySearch (int *pArray, unsigned int size, int elem)
+void binarySearchRegular (int *pArray, unsigned int size, int elem)
 {
+    if (pArray == NULL)
+    {
+        printf("NULL array\n");
+        return;
+    }
+
     unsigned int l = 0;
     unsigned int r = size;
     unsigned int m = (l+r)/2;
@@ -51,8 +57,10 @@ int main ()
     int array1[10] = {1,3,5,7,9,11,13,15,17,19};
     int array2[10] = {2,4,6,8,10,12,14,16,18,20};
 
-    binarySearch(array1, 10, 15);
-    binarySearch(array1, 10, 16);
-    binarySearch(array2, 10, 18);
-    binarySearch(array2, 10, 19);
+    binarySearchRegular(array1, 10, 15);
+    binarySearchRegular(array1, 10, 16);
+    binarySearchRegular(array2, 10, 18);
+    binarySearchRegular(array2, 10, 19);
+
+    return 0;
 }
